@@ -1,0 +1,316 @@
+.collapsedCatalogue {
+  display: block;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diseaseCard {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1.25rem;
+  background: rgba(252, 249, 247, 0.82);
+  padding: 1rem;
+  box-shadow: 0 10px 26px rgba(38, 25, 32, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px) saturate(155%);
+  -webkit-backdrop-filter: blur(18px) saturate(155%);
+}
+
+.symptomCount {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #f4e6e9;
+  padding: 0.32rem 0.58rem;
+  color: #6f1d35;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 0.8rem;
+  color: #544245;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.symptomList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  padding: 0;
+  list-style: none;
+}
+
+.symptomList li {
+  border: 1px solid #eadde0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0.28rem 0.55rem;
+  color: #5c3d47;
+  font-size: 0.68rem;
+  line-height: 1.25;
+}
+
+.noSymptoms {
+  margin-top: 0.7rem;
+  color: #806771;
+  font-size: 0.75rem;
+}
+
+.viewButton {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin-top: 0.45rem;
+  padding-top: 0.55rem;
+  color: #6f1d35;
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-align: left;
+}
+
+.viewButton:hover {
+  color: #4d1024;
+}
+
+.viewButton:focus-visible,
+.dialogClose:focus-visible {
+  border-radius: 0.5rem;
+  outline: 2px solid #6f1d35;
+  outline-offset: 3px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 1rem;
+  background: rgba(252, 249, 247, 0.88);
+  padding: 0.45rem;
+  color: #705660;
+  font-size: 0.8rem;
+  backdrop-filter: blur(16px);
+}
+
+.diseaseDialog {
+  display: flex;
+  width: min(96vw, 48rem);
+  max-width: none;
+  max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 1rem);
+  flex-direction: column;
+  overflow: hidden;
+  margin: auto;
+  border: 1px solid rgba(255, 255, 255, 0.94);
+  border-radius: 1.25rem;
+  background: rgba(252, 249, 247, 0.98);
+  padding: 0;
+  color: #1b1c1b;
+  box-shadow: 0 24px 70px rgba(7, 8, 10, 0.38), inset 0 1px 0 #fff;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.diseaseDialog:not([open]) {
+  display: none;
+}
+
+.diseaseDialog::backdrop {
+  background: rgba(13, 12, 15, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.dialogHeader,
+.dialogFooter {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid #eadde0;
+  padding: 0.9rem 1rem;
+}
+
+.dialogFooter {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  border-top: 1px solid #eadde0;
+  border-bottom: 0;
+  padding-bottom: max(0.9rem, env(safe-area-inset-bottom));
+}
+
+.dialogClose {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #eadde0;
+  border-radius: 0.85rem;
+  background: #fff;
+  color: #6f1d35;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.dialogBody {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 1rem;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dialogBody > form {
+  margin-top: 0;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.detailGrid > div {
+  min-width: 0;
+  border: 1px solid rgba(234, 221, 224, 0.75);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.85rem;
+}
+
+.detailGrid dd {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .dialogFooter button {
+    min-height: 2.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .diseaseCard {
+    min-height: 15rem;
+    border-radius: 1.35rem;
+    background: rgba(252, 249, 247, 0.9);
+    padding: 1.35rem;
+    box-shadow: 0 12px 30px rgba(8, 10, 14, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .symptomCount {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .description {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .symptomList {
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+  }
+
+  .symptomList li {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+  }
+
+  .viewButton {
+    min-height: 2.65rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.83rem;
+  }
+
+  .pagination {
+    margin-top: 1.25rem;
+    padding: 0.55rem;
+    font-size: 0.85rem;
+  }
+
+  .diseaseDialog {
+    width: min(92vw, 58rem);
+    max-height: min(88vh, 56rem);
+    border-radius: 1.5rem;
+    background: rgba(252, 249, 247, 0.97);
+    box-shadow: 0 24px 80px rgba(7, 8, 10, 0.42), inset 0 1px 0 #fff;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .dialogClose {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .dialogHeader,
+  .dialogFooter {
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .dialogBody {
+    padding: 1.5rem;
+  }
+
+  .detailGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .detailGrid > div {
+    border: 0;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.76);
+    padding: 1rem;
+  }
+
+  .detailGrid > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

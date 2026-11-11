@@ -20,18 +20,42 @@
 # production
 /build
 
+# Generated Prisma client output
+/generated/
+
 # misc
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# local databases, dumps, backups, and exports
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.bak
+*.backup
+/backups/
+/exports/
+
+# private keys and local certificates
 *.pem
+*.key
+*.p12
+*.pfx
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+*.tmp
+*.temp
 
 # env files (can opt-in for committing if needed)
 .env*
+!/.env.example
 
 # vercel
 .vercel
@@ -39,3 +63,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local editor state
+/.idea/
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+
+# duplicated local AI skill bundles
+/.agents/skills/
+/.claude/skills/
+/.windsurf/skills/
+/skills-lock.json

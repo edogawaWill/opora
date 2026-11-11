@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "title": "OPORA Initial Disease Catalog & Source Register",
+    "version": "1.0.0",
+    "dateCreated": "2026-11-03",
+    "diseaseCount": 12,
+    "tierAAssociationCount": 49,
+    "tierBAssociationCount": 5,
+    "tierADistinctSymptoms": 20,
+    "totalDistinctSymptomsCovered": 22,
+    "catalogUtilizationRate": "68.8%",
+    "disclaimer": "This dataset provides consumer health education and disease-to-symptom relationships for OPORA. It is intended for informative browsing and guided symptom assessment only; it does not compute diagnostic probabilities or replace professional medical evaluation."
+  },
+  "tierBAssociations": [
+    {
+      "diseaseName": "Pneumonia",
+      "symptomName": "Fatigue",
+      "hpoId": "HP:0012378",
+      "clinicalQualification": "Documented secondary constitutional manifestation; retained for patient narrative education, excluded from binary assessment matching.",
+      "sourceUrl": "https://medlineplus.gov/ency/article/000145.htm"
+    },
+    {
+      "diseaseName": "Pneumonia",
+      "symptomName": "Poor appetite",
+      "hpoId": "HP:0004396",
+      "clinicalQualification": "Variable systemic sign of acute lower respiratory illness; noted in educational narrative, excluded from binary assessment matching.",
+      "sourceUrl": "https://medlineplus.gov/ency/article/000145.htm"
+    },
+    {
+      "diseaseName": "Migraine",
+      "symptomName": "Blurred vision",
+      "hpoId": "HP:0000622",
+      "clinicalQualification": "Transient neurological aura phase symptom only; excluded from binary matching to prevent misleading eye-complaint matches.",
+      "sourceUrl": "https://medlineplus.gov/ency/article/000709.htm"
+    },
+    {
+      "diseaseName": "Migraine",
+      "symptomName": "Neck pain",
+      "hpoId": "HP:0030833",
+      "clinicalQualification": "Prodromal or postdromal symptom of trigeminocervical irritation; excluded from binary matching to avoid false matches for orthopedic neck strain.",
+      "sourceUrl": "https://medlineplus.gov/ency/article/000709.htm"
+    },
+    {
+      "diseaseName": "Allergic Rhinitis (Hay Fever)",
+      "symptomName": "Fatigue",
+      "hpoId": "HP:0012378",
+      "clinicalQualification": "Secondary chronic fatigue caused by allergen-induced nocturnal airway resistance and disrupted sleep, rather than acute prostration.",
+      "sourceUrl": "https://medlineplus.gov/ency/article/000813.htm"
+    }
+  ],
+  "diseases": [
+    {
+      "diseaseName": "Common Cold",
+      "description": "The common cold is a mild, self-limiting viral infection of the upper respiratory tract, primarily affecting the nose and throat. Most adults recover within 7 to 10 days, although symptoms can sometimes linger slightly longer.",
+      "causes": "Colds are caused by more than 200 different viruses, with rhinoviruses being the most frequent culprit. The viruses spread easily through the air when an infected person coughs or sneezes, or via direct contact with contaminated surfaces and hands.",
+      "treatment": "There is no cure or antiviral treatment for the common cold, and antibiotics are ineffective against viral infections. Care centers on symptom relief: getting adequate bed rest, staying hydrated with water and warm fluids, and using over-the-counter pain relievers or decongestants under professional advice.",
+      "prevention": "Wash hands frequently with soap and warm water for at least 20 seconds. Avoid touching the eyes, nose, and mouth with unwashed hands. Disinfect frequently touched household surfaces and avoid close contact with individuals who are unwell.",
+      "whenToSeekCare": "Consult a healthcare professional if symptoms worsen or do not improve after 10 days, if you develop a high or sustained fever, difficulty breathing, wheezing, severe sore throat, or sinus-area pain that persists.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/commoncold.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000678.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Nasal congestion", "hpoId": "HP:0001742", "sourceEvidence": "Stuffy nose / nasal congestion from upper airway mucosal edema." },
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Cough triggered by mucosal irritation and post-nasal drip." },
+        { "symptomName": "Headache", "hpoId": "HP:0002315", "sourceEvidence": "Mild headache associated with upper respiratory congestion." }
+      ]
+    },
+    {
+      "diseaseName": "Influenza (Flu)",
+      "description": "Influenza is an acute, contagious respiratory illness caused by influenza viruses infecting the nose, throat, and lungs. Unlike a mild cold, the flu typically strikes suddenly with prominent systemic signs including fever, body aches, and marked exhaustion.",
+      "causes": "Influenza is caused by influenza A and B viruses that circulate seasonally. They spread through respiratory droplets expelled when infected individuals cough, sneeze, or talk, or through touching surfaces contaminated with active virus.",
+      "treatment": "Most people recover with rest, abundant fluids, and fever-reducing medications. For individuals at high risk of complications or presenting early in the illness, prescription antiviral medications may shorten duration and lessen severity if started promptly.",
+      "prevention": "An annual seasonal influenza vaccination is the primary and most effective method of prevention. Routine preventive measures include diligent hand hygiene, respiratory etiquette (covering coughs), and staying home when sick.",
+      "whenToSeekCare": "Seek emergency medical evaluation for shortness of breath or chest discomfort, confusion, persistent dizziness, high fever that does not respond to medication, or symptoms that improve but then return with a worse fever and cough.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/flu.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000080.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Fever", "hpoId": "HP:0001945", "sourceEvidence": "Sudden onset of moderate to high temperature (typically 100°F–104°F)." },
+        { "symptomName": "Chills", "hpoId": "HP:0025143", "sourceEvidence": "Shaking chills and rigors accompanying sudden fever." },
+        { "symptomName": "Fatigue", "hpoId": "HP:0012378", "sourceEvidence": "Severe, sudden exhaustion and malaise lasting days to weeks." },
+        { "symptomName": "Headache", "hpoId": "HP:0002315", "sourceEvidence": "Prominent, intense headache during acute onset." },
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Persistent dry or hacking respiratory cough." },
+        { "symptomName": "Nasal congestion", "hpoId": "HP:0001742", "sourceEvidence": "Nasal congestion and stuffiness." }
+      ]
+    },
+    {
+      "diseaseName": "Acute Bronchitis",
+      "description": "Acute bronchitis is an inflammation of the large bronchial airways (bronchi) leading into the lungs, often termed a chest cold. It frequently develops following an upper respiratory infection and is characterized by a persistent cough that may bring up mucus.",
+      "causes": "Acute bronchitis is usually caused by respiratory viruses, such as rhinoviruses, influenza, or respiratory syncytial virus (RSV). It can occasionally be triggered by bacterial infections or exposure to airborne irritants like tobacco smoke and dust.",
+      "treatment": "Because acute bronchitis is overwhelmingly viral, antibiotics are not recommended unless a bacterial complication arises. Supportive therapy includes drinking plenty of fluids, using a cool-mist humidifier, and taking over-the-counter cough suppressants or expectorants as advised by a clinician.",
+      "prevention": "Avoid cigarette smoke and secondhand smoke, practice regular hand hygiene, stay up to date on recommended annual flu immunizations, and wear a mask when exposed to fumes or airborne dust.",
+      "whenToSeekCare": "Consult a doctor if your cough lasts longer than 3 weeks, prevents sleep, produces bloody or rust-colored phlegm, or is accompanied by a fever over 38°C (100.4°F), wheezing, or shortness of breath.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/acutebronchitis.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/001087.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Persistent cardinal cough that can last from 1 to 3 weeks." },
+        { "symptomName": "Productive cough", "hpoId": "HP:0031245", "sourceEvidence": "Cough that produces clear, yellow, or greenish bronchial mucus/phlegm." },
+        { "symptomName": "Wheezing", "hpoId": "HP:0030828", "sourceEvidence": "Expiratory whistling sound caused by bronchial airway narrowing." },
+        { "symptomName": "Fatigue", "hpoId": "HP:0012378", "sourceEvidence": "General tiredness and malaise accompanying airway inflammation." }
+      ]
+    },
+    {
+      "diseaseName": "Pneumonia",
+      "description": "Pneumonia is an infection of one or both lungs where the air sacs (alveoli) fill with fluid or purulent material. It can range in severity from mild illness to life-threatening disease, particularly in young infants, adults over 65, and those with weakened immunity.",
+      "causes": "Pneumonia can be caused by bacterial, viral, or fungal infections. Aspiration pneumonia may also occur after inhaling food, liquids, saliva, or vomit into the lungs.",
+      "treatment": "Treatment depends on the underlying etiology and clinical severity. Bacterial pneumonia requires prescription antibiotics, viral pneumonia may be managed with supportive care or antivirals, and severe cases may require hospital admission, oxygen therapy, and intravenous fluids.",
+      "prevention": "Get vaccinated against pneumococcal pneumonia and influenza. Practice rigorous handwashing, avoid smoking which damages lung defenses, and maintain a robust immune system through healthy nutrition and rest.",
+      "whenToSeekCare": "Pneumonia is a serious condition. Seek immediate emergency care for difficulty breathing, persistent chest pain that worsens with inhalation or coughing, a high fever, blue lips or fingertips, or confusion in older adults.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/pneumonia.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000145.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Fever", "hpoId": "HP:0001945", "sourceEvidence": "Moderate to high fever, often accompanied by heavy sweating." },
+        { "symptomName": "Chills", "hpoId": "HP:0025143", "sourceEvidence": "Severe shaking chills and rigors." },
+        { "symptomName": "Productive cough", "hpoId": "HP:0031245", "sourceEvidence": "Cough that produces greenish, yellow, or bloody sputum." },
+        { "symptomName": "Chest pain", "hpoId": "HP:0100749", "sourceEvidence": "Sharp or stabbing pleuritic chest pain that worsens when breathing deeply or coughing." },
+        { "symptomName": "Nausea", "hpoId": "HP:0002018", "sourceEvidence": "Documented gastrointestinal symptom associated with lower respiratory infection." },
+        { "symptomName": "Vomiting", "hpoId": "HP:0002013", "sourceEvidence": "Documented gastrointestinal symptom occurring in pneumonia." },
+        { "symptomName": "Diarrhea", "hpoId": "HP:0002014", "sourceEvidence": "Documented potential symptom listed in MedlinePlus Pneumonia topic." }
+      ]
+    },
+    {
+      "diseaseName": "Asthma",
+      "description": "Asthma is a chronic, non-communicable lung disease characterized by hyper-reactive airways that swell, narrow, and produce excess mucus in response to various triggers, resulting in recurrent episodes of breathing difficulty.",
+      "causes": "The exact cause of asthma involves complex genetic and environmental interactions. Common triggers that incite exacerbations include airborne allergens (pollen, dust mites, pet dander), viral respiratory infections, cold air, exercise, smoke, and air pollution.",
+      "treatment": "Asthma cannot be cured, but it is manageable. A healthcare professional develops an individualized asthma treatment plan that may include quick-relief medicines (relievers) to open airways during symptoms and daily controller medicines to reduce airway inflammation, tailored to the patient's specific needs.",
+      "prevention": "Identify and strictly avoid known environmental triggers. Follow a personalized written Asthma Action Plan created with a healthcare professional, monitor peak expiratory flow, and take prescribed controller inhalers consistently.",
+      "whenToSeekCare": "Seek emergency medical intervention immediately if you experience severe shortness of breath, inability to speak in full sentences, inhalers providing no relief, chest retractions, or bluish lips or nails.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/asthma.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000141.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Wheezing", "hpoId": "HP:0030828", "sourceEvidence": "High-pitched musical whistling sound upon exhalation, hallmark of airway narrowing." },
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Recurrent dry cough, frequently worsening at night or during exercise." }
+      ]
+    },
+    {
+      "diseaseName": "Sinusitis",
+      "description": "Sinusitis (rhinosinusitis) is an inflammation or infection of the mucous membranes lining the paranasal sinuses. It causes the sinus cavities to become blocked and filled with fluid, creating pressure and pain across the facial bones.",
+      "causes": "Sinusitis most commonly follows a viral upper respiratory infection (such as a cold) that blocks sinus drainage. Other causes include secondary bacterial infections, seasonal allergies, nasal polyps, or a deviated nasal septum.",
+      "treatment": "Most cases of acute sinusitis resolve on their own without antibiotics. Supportive care includes saline nasal irrigation, staying well hydrated, warm compresses, and over-the-counter pain relievers or nasal sprays. A healthcare professional may consider antibiotics when a bacterial infection is suspected based on the clinical presentation and course of illness.",
+      "prevention": "Manage allergies effectively, promptly treat colds, avoid tobacco smoke and dry indoor air by using a clean humidifier, and practice thorough hand hygiene.",
+      "whenToSeekCare": "Consult a healthcare provider if symptoms last longer than 10 days without improvement, if symptoms worsen after initial recovery, or if you develop severe frontal headache, facial swelling, stiff neck, or changes in vision.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/sinusitis.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000647.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Nasal congestion", "hpoId": "HP:0001742", "sourceEvidence": "Nasal blockage and thick discolored nasal discharge." },
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Cough caused by persistent post-nasal drip draining down the pharynx." },
+        { "symptomName": "Fatigue", "hpoId": "HP:0012378", "sourceEvidence": "Malaise and general fatigue accompanying sinus inflammation." },
+        { "symptomName": "Headache", "hpoId": "HP:0002315", "sourceEvidence": "Headache documented in MedlinePlus Encyclopedia (ency/000647) distinct from localized facial pressure." }
+      ]
+    },
+    {
+      "diseaseName": "Viral Gastroenteritis",
+      "description": "Viral gastroenteritis, often called the stomach flu, is an acute inflammation of the lining of the stomach and intestines. It is marked by the rapid onset of watery diarrhea and vomiting, carrying a significant risk of dehydration.",
+      "causes": "It is caused by enteric viruses including noroviruses (the most common in adults) and rotaviruses (in children). The viruses spread via contaminated food, water, surfaces, or direct person-to-person contact.",
+      "treatment": "The primary treatment is oral rehydration and appropriate electrolyte replacement solutions to prevent and treat dehydration. Commercial oral rehydration solutions are preferred; sugary drinks like fruit juices and soft drinks are unsuitable as they can worsen diarrhea. The suitability of antidiarrheal medicines depends on age and symptoms, and they should not be used in children or when high fever or bloody diarrhea is present without direct medical supervision.",
+      "prevention": "Practice rigorous handwashing with soap and water, especially after using the toilet and before preparing food. Wash fruits and vegetables thoroughly, cook shellfish completely, and disinfect contaminated surfaces with chlorine bleach solutions.",
+      "whenToSeekCare": "Seek prompt medical attention if you exhibit signs of dehydration (dry mouth, extreme thirst, little or no urination, dizziness upon standing), cannot keep liquids down for 24 hours, have blood in stool or vomit, or have a high fever.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/gastroenteritis.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000252.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Diarrhea", "hpoId": "HP:0002014", "sourceEvidence": "Frequent watery, non-bloody diarrhea." },
+        { "symptomName": "Nausea", "hpoId": "HP:0002018", "sourceEvidence": "Sensation of stomach unease and urge to vomit." },
+        { "symptomName": "Vomiting", "hpoId": "HP:0002013", "sourceEvidence": "Repeated emesis of stomach contents." },
+        { "symptomName": "Abdominal pain", "hpoId": "HP:0002027", "sourceEvidence": "Cramping abdominal pain and intestinal discomfort." },
+        { "symptomName": "Fever", "hpoId": "HP:0001945", "sourceEvidence": "Low-grade pyrexia associated with viral infection." }
+      ]
+    },
+    {
+      "diseaseName": "Migraine",
+      "description": "Migraine is a complex neurological disorder characterized by recurrent attacks of moderate to severe pulsating, throbbing headache, typically unilateral, often accompanied by hypersensitivity to light and sound and autonomic symptoms.",
+      "causes": "Migraine involves abnormal neurological signaling and neurochemical changes (involving serotonin and CGRP) that affect brainstem pathways and trigeminal vascular innervation. Attacks are often triggered by stress, hormonal fluctuations, lack of sleep, certain foods, or environmental stimuli.",
+      "treatment": "Acute treatments taken at the earliest sign of an attack include pain relievers or migraine-specific medicines. For frequent or severe attacks, healthcare providers may recommend preventive medicines—such as certain blood pressure medications, antidepressants, or antiseizure medicines. Medication selection and preventive treatment require close guidance from a healthcare professional.",
+      "prevention": "Maintain a regular daily schedule with consistent sleep, meals, and hydration. Identify and avoid personal dietary and environmental triggers, and practice stress-management techniques such as biofeedback or relaxation exercises.",
+      "whenToSeekCare": "Seek immediate emergency evaluation for a sudden 'thunderclap' headache reaching peak intensity within seconds, headache accompanied by fever, stiff neck, confusion, seizure, or focal neurological deficits like numbness or speech difficulty.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/migraine.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000709.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Headache", "hpoId": "HP:0002315", "sourceEvidence": "Severe, throbbing, pulsating unilateral headache lasting 4 to 72 hours." },
+        { "symptomName": "Nausea", "hpoId": "HP:0002018", "sourceEvidence": "Cardinal vegetative symptom accompanying moderate to severe headache." },
+        { "symptomName": "Vomiting", "hpoId": "HP:0002013", "sourceEvidence": "Frequent emesis occurring during the peak headache attack." }
+      ]
+    },
+    {
+      "diseaseName": "Dengue Fever",
+      "description": "Dengue is an acute mosquito-borne viral infection prevalent in tropical and subtropical regions. It causes sudden high fever, excruciating retro-orbital headache, and severe musculoskeletal pain, earning the historical moniker 'breakbone fever'.",
+      "causes": "Dengue is caused by one of four dengue virus serotypes (DENV 1–4) and is transmitted to humans through the bite of infected female Aedes aegypti and Aedes albopictus mosquitoes.",
+      "treatment": "There is no specific antiviral medicine for dengue. Supportive management involves bed rest, careful fluid maintenance, and paracetamol for fever and pain. Aspirin, ibuprofen, and other NSAIDs must be strictly avoided due to their blood-thinning effect and risk of hemorrhage.",
+      "prevention": "Prevent mosquito bites by using DEET-based repellents, installing window screens, wearing long-sleeved protective clothing, and eliminating standing water reservoirs around living spaces where Aedes mosquitoes breed.",
+      "whenToSeekCare": "Dengue can rapidly progress to severe dengue (dengue hemorrhagic fever). Go to an emergency room immediately if you develop severe abdominal pain, persistent vomiting, bleeding gums or nose, rapid breathing, fatigue, or blood in stool or vomit.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/dengue.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/001374.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Fever", "hpoId": "HP:0001945", "sourceEvidence": "Sudden onset of high fever reaching 40°C (104°F)." },
+        { "symptomName": "Headache", "hpoId": "HP:0002315", "sourceEvidence": "Intense frontal headache, characteristically with severe retro-orbital pain." },
+        { "symptomName": "Nausea", "hpoId": "HP:0002018", "sourceEvidence": "Common gastrointestinal presentation in acute phase." },
+        { "symptomName": "Vomiting", "hpoId": "HP:0002013", "sourceEvidence": "Repeated emesis; considered a clinical warning sign." },
+        { "symptomName": "Skin rash", "hpoId": "HP:0000988", "sourceEvidence": "Maculopapular or petechial rash appearing 2 to 5 days after fever onset." },
+        { "symptomName": "Fatigue", "hpoId": "HP:0012378", "sourceEvidence": "Profound post-viral asthenia and exhaustion." }
+      ]
+    },
+    {
+      "diseaseName": "Osteoarthritis",
+      "description": "Osteoarthritis (OA) is the most common form of arthritis, involving the gradual mechanical and biological breakdown of protective articular cartilage and remodeling of underlying bone within synovial joints.",
+      "causes": "OA results from joint wear and tear, aging, joint injury or repetitive stress, obesity which places excessive load on weight-bearing joints, and hereditary joint vulnerabilities.",
+      "treatment": "Treatment aims to reduce pain and preserve mobility. Approaches include low-impact exercise (swimming, walking), physical therapy, weight management, topical or oral NSAIDs, supportive braces, and joint replacement surgery for advanced joint failure.",
+      "prevention": "Maintain a healthy body weight to reduce mechanical stress on knees and hips, engage in regular non-impact physical activity to strengthen surrounding musculature, and prevent traumatic joint injuries during sports or physical labor.",
+      "whenToSeekCare": "Consult a healthcare provider if joint pain or stiffness impairs daily activities, does not improve with rest, or if a joint becomes hot, red, and swollen, which may indicate infection or crystalline arthritis rather than osteoarthritis.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/osteoarthritis.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000435.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Joint stiffness", "hpoId": "HP:0001387", "sourceEvidence": "Morning joint stiffness typically lasting less than 30 minutes, or stiffness after rest." },
+        { "symptomName": "Knee pain", "hpoId": "HP:0030839", "sourceEvidence": "Weight-bearing knee joint pain and functional limitation." },
+        { "symptomName": "Hand pain", "hpoId": "HP:0046505", "sourceEvidence": "Pain and bony enlargement at distal and proximal interphalangeal joints." },
+        { "symptomName": "Back pain", "hpoId": "HP:0003418", "sourceEvidence": "Lower back pain caused by lumbar facet joint osteoarthritis." },
+        { "symptomName": "Neck pain", "hpoId": "HP:0030833", "sourceEvidence": "Cervical spine pain and stiffness caused by cervical facet joint degeneration." }
+      ]
+    },
+    {
+      "diseaseName": "Pink Eye (Conjunctivitis)",
+      "description": "Conjunctivitis is an inflammation or infection of the transparent membrane (conjunctiva) that lines the eyelid and covers the white part of the eyeball. When tiny blood vessels in the conjunctiva become inflamed, they become more visible, giving the eye a pink or reddish appearance.",
+      "causes": "Pink eye is most commonly caused by viral infections (adenoviruses) or bacterial pathogens. It can also stem from allergic reactions (such as pollen or pet dander) or chemical irritants (chlorine, smoke, cosmetics).",
+      "treatment": "Viral conjunctivitis usually resolves on its own within 1 to 2 weeks without medication; cool artificial tear compresses relieve discomfort. Bacterial cases may be treated with antibiotic eye drops. Allergic forms respond to allergy eye drops and removing the allergen.",
+      "prevention": "Wash hands frequently, avoid rubbing or touching the eyes, do not share towels, washcloths, or eye makeup, and replace contact lenses and storage cases as directed by an eye-care professional.",
+      "whenToSeekCare": "See an eye care specialist or seek emergency care if you experience moderate to severe eye pain, extreme sensitivity to light, redness that spreads, intense yellow or green discharge, or reduced visual acuity.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/pinkeye.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/001010.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Red eye", "hpoId": "HP:0025337", "sourceEvidence": "Redness over the sclera and inner eyelid caused by conjunctival vascular dilation." }
+      ]
+    },
+    {
+      "diseaseName": "Allergic Rhinitis (Hay Fever)",
+      "description": "Allergic rhinitis, commonly known as hay fever, is an allergic response of the nasal mucosa to airborne environmental allergens. It manifests with sneezing, nasal congestion, runny nose, and ocular itching.",
+      "causes": "The immune system mistakenly identifies harmless airborne particles (such as tree, grass, or weed pollen, dust mites, mold spores, or animal dander) as threats, releasing histamine and inflammatory mediators in nasal tissues.",
+      "treatment": "Standard treatments include oral non-sedating antihistamines, corticosteroid nasal sprays to reduce mucosal inflammation, saline nasal rinses, and allergen immunotherapy (allergy shots or sublingual tablets) for refractory symptoms.",
+      "prevention": "Minimize exposure to known allergens: keep windows closed during peak pollen seasons, use air conditioning with HEPA filters, encase pillows and mattresses in allergen-proof covers, and wash hands after petting animals.",
+      "whenToSeekCare": "Consult a healthcare provider or allergist if allergy symptoms interfere with sleep, work, or quality of life, if over-the-counter medications fail to provide relief, or if symptoms are complicated by recurrent sinus infections or wheezing.",
+      "sources": {
+        "primaryTopicUrl": "https://medlineplus.gov/hayfever.html",
+        "secondaryEncyclopediaUrl": "https://medlineplus.gov/ency/article/000813.htm",
+        "attribution": "Source: MedlinePlus, National Library of Medicine."
+      },
+      "tierASymptomMappings": [
+        { "symptomName": "Nasal congestion", "hpoId": "HP:0001742", "sourceEvidence": "Nasal mucosal swelling and airway obstruction triggered by allergen exposure." },
+        { "symptomName": "Red eye", "hpoId": "HP:0025337", "sourceEvidence": "Allergic conjunctival injection and itching (allergic rhinoconjunctivitis)." },
+        { "symptomName": "Cough", "hpoId": "HP:0012735", "sourceEvidence": "Dry, throat-clearing cough provoked by chronic allergic post-nasal drip." }
+      ]
+    }
+  ]
+}

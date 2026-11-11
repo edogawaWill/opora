@@ -1,0 +1,319 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// 1. USER
+// ============================================================
+
+model User {
+  id             Int      @id @default(autoincrement()) @map("userID")
+  fullName       String   @db.VarChar(100)
+  email          String   @unique @db.VarChar(100)
+  /// @deprecated Better Auth stores credential hashes in Account.password.
+  password       String?  @db.VarChar(255)
+  image          String?  @db.Text
+  phoneNo        String   @db.VarChar(15)
+  role           String   @default("UNASSIGNED") @db.VarChar(20)
+  accountStatus  String   @default("PROVISIONING") @db.VarChar(20)
+  emailVerified  Boolean  @default(false)
+  dateRegistered DateTime @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime @updatedAt @db.Timestamp(6)
+
+  patient                Patient?
+  healthcareProfessional HealthcareProfessional?
+  admin                  Admin?
+  sessions               Session[]
+  accounts               Account[]
+
+  sentMessages     Message[] @relation("MessageSender")
+  receivedMessages Message[] @relation("MessageReceiver")
+}
+
+// ============================================================
+// 2. PATIENT
+// ============================================================
+
+model Patient {
+  patientID        Int      @id @default(autoincrement())
+  userID           Int      @unique
+  icNumber         String   @unique @db.VarChar(14)
+  dateOfBirth      DateTime @db.Date
+  gender           String   @db.VarChar(10)
+  address          String   @db.Text
+  bloodType        String?  @db.VarChar(3)
+  allergies        String?  @db.Text
+  emergencyContact String?  @db.VarChar(100)
+
+  user           User            @relation(fields: [userID], references: [id])
+  symptomRecords SymptomRecord[]
+  assessments    Assessment[]
+  diagnoses      Diagnosis[]
+  appointments   Appointment[]
+  hcpConsents    PatientHcpConsent[]
+}
+
+// ============================================================
+// 3. HEALTHCARE PROFESSIONAL
+// ============================================================
+
+model HealthcareProfessional {
+  hcpID              Int    @id @default(autoincrement())
+  userID             Int    @unique
+  licenseNo          String @unique @db.VarChar(20)
+  specialization     String @db.VarChar(60)
+  workplace          String @db.VarChar(120)
+  yearsOfExperience  Int
+  verificationStatus String @default("Pending") @db.VarChar(20)
+  verifiedBy         Int?
+  verifiedAt         DateTime? @db.Timestamp(6)
+
+  user         User          @relation(fields: [userID], references: [id])
+  verifier     Admin?        @relation("HcpVerifiedBy", fields: [verifiedBy], references: [adminID])
+  appointments Appointment[]
+  patientConsents PatientHcpConsent[]
+}
+
+// Patient-granted access history. Each revoked grant remains as a separate row;
+// a later grant creates a new ACTIVE consent row for the same pair.
+model PatientHcpConsent {
+  consentID Int       @id @default(autoincrement())
+  patientID Int
+  hcpID     Int
+  status    String    @default("ACTIVE") @db.VarChar(20)
+  grantedAt DateTime  @default(now()) @db.Timestamp(6)
+  revokedAt DateTime? @db.Timestamp(6)
+  createdAt DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt DateTime  @updatedAt @db.Timestamp(6)
+
+  patient Patient                @relation(fields: [patientID], references: [patientID], onDelete: Restrict, onUpdate: Cascade)
+  hcp     HealthcareProfessional @relation(fields: [hcpID], references: [hcpID], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([patientID, hcpID])
+  @@index([hcpID, status])
+}
+
+
+// ============================================================
+// 4. ADMIN
+// ============================================================
+
+model Admin {
+  adminID  Int    @id @default(autoincrement())
+  userID   Int    @unique
+  position String @db.VarChar(50)
+
+  user User @relation(fields: [userID], references: [id])
+
+  verifiedHealthcareProfessionals HealthcareProfessional[] @relation("HcpVerifiedBy")
+  updatedDiseases                 Disease[]                @relation("DiseaseUpdatedBy")
+  auditLogs                       AuditLog[]               @relation("AdminAuditLogs")
+}
+
+// ============================================================
+// BETTER AUTH
+// ============================================================
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  expiresAt DateTime @db.Timestamp(6)
+  token     String   @unique @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @db.Timestamp(6)
+  ipAddress String?  @db.VarChar(255)
+  userAgent String?  @db.Text
+  userId    Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id                    Int       @id @default(autoincrement())
+  accountId             String    @db.VarChar(255)
+  providerId            String    @db.VarChar(255)
+  userId                Int
+  accessToken           String?   @db.Text
+  refreshToken          String?   @db.Text
+  idToken               String?   @db.Text
+  accessTokenExpiresAt  DateTime? @db.Timestamp(6)
+  refreshTokenExpiresAt DateTime? @db.Timestamp(6)
+  scope                 String?   @db.Text
+  password              String?   @db.Text
+  createdAt             DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt             DateTime  @updatedAt @db.Timestamp(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+
+model Verification {
+  id         Int      @id @default(autoincrement())
+  identifier String   @db.VarChar(255)
+  value      String   @db.Text
+  expiresAt  DateTime @db.Timestamp(6)
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime @updatedAt @db.Timestamp(6)
+
+  @@index([identifier])
+}
+
+// ============================================================
+// 5. SYMPTOM
+// ============================================================
+
+model Symptom {
+  symptomID   Int    @id @default(autoincrement())
+  symptomName String @unique @db.VarChar(80)
+  bodyPart    String @db.VarChar(50)
+  description String @db.Text
+
+  symptomRecords  SymptomRecord[]
+  diseaseSymptoms DiseaseSymptom[]
+}
+
+// ============================================================
+// 6. SYMPTOM RECORD
+// ============================================================
+
+model SymptomRecord {
+  recordID   Int      @id @default(autoincrement())
+  patientID  Int
+  symptomID  Int
+  severity   Int
+  onsetDate  DateTime @db.Date
+  duration   String   @db.VarChar(30)
+  notes      String?  @db.Text
+  recordedAt DateTime @default(now()) @db.Timestamp(6)
+
+  patient Patient @relation(fields: [patientID], references: [patientID])
+  symptom Symptom @relation(fields: [symptomID], references: [symptomID])
+}
+
+// ============================================================
+// 7. DISEASE
+// ============================================================
+
+model Disease {
+  diseaseID      Int      @id @default(autoincrement())
+  diseaseName    String   @unique @db.VarChar(100)
+  description    String   @db.Text
+  causes         String   @db.Text
+  treatment      String   @db.Text
+  prevention     String   @db.Text
+  whenToSeekCare String   @db.Text
+  lastUpdated    DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  updatedBy      Int
+
+  updater         Admin            @relation("DiseaseUpdatedBy", fields: [updatedBy], references: [adminID])
+  diseaseSymptoms DiseaseSymptom[]
+}
+
+// ============================================================
+// 8. DISEASE SYMPTOM
+// ============================================================
+
+model DiseaseSymptom {
+  diseaseID Int
+  symptomID Int
+
+  disease Disease @relation(fields: [diseaseID], references: [diseaseID])
+  symptom Symptom @relation(fields: [symptomID], references: [symptomID])
+
+  @@id([diseaseID, symptomID])
+}
+
+// ============================================================
+// 9. APPOINTMENT
+// ============================================================
+
+model Appointment {
+  appointmentID   Int      @id @default(autoincrement())
+  patientID       Int
+  hcpID           Int
+  appointmentDate DateTime @db.Date
+  appointmentTime DateTime @db.Time(0)
+  reason          String   @db.Text
+  status          String   @default("Pending") @db.VarChar(20)
+  createdAt       DateTime @default(now()) @db.Timestamp(6)
+
+  patient Patient                @relation(fields: [patientID], references: [patientID])
+  hcp     HealthcareProfessional @relation(fields: [hcpID], references: [hcpID])
+}
+
+// ============================================================
+// 10. MESSAGE
+// Messages between Users.
+// ============================================================
+
+model Message {
+  messageID  Int      @id @default(autoincrement())
+  senderID   Int
+  receiverID Int
+  content    String   @db.Text
+  sentAt     DateTime @default(now()) @db.Timestamp(6)
+  readStatus Boolean  @default(false)
+
+  sender   User @relation("MessageSender", fields: [senderID], references: [id])
+  receiver User @relation("MessageReceiver", fields: [receiverID], references: [id])
+}
+
+// ============================================================
+// 11. ASSESSMENT
+// Saved guided symptom assessment and informational result.
+// This does not represent a confirmed medical diagnosis.
+// ============================================================
+
+model Assessment {
+  assessmentID   Int      @id @default(autoincrement())
+  patientID      Int
+  assessmentDate DateTime @default(now()) @db.Timestamp(6)
+  symptomsInput  String   @db.Text
+  answers        Json     @db.JsonB
+  resultSummary  String   @db.Text
+
+  patient Patient @relation(fields: [patientID], references: [patientID])
+}
+
+// ============================================================
+// 12. DIAGNOSIS — NEW ENTITY
+// Previously established, patient-reported diagnosis history.
+// Kept separate from OPORA symptom assessment results.
+// ============================================================
+
+model Diagnosis {
+  diagnosisID   Int       @id @default(autoincrement())
+  patientID     Int
+  diagnosisName String    @db.VarChar(120)
+  diagnosisDate DateTime? @db.Date
+  diagnosedBy   String?   @db.VarChar(120)
+  notes         String?   @db.Text
+  recordedAt    DateTime  @default(now()) @db.Timestamp(6)
+
+  patient Patient @relation(fields: [patientID], references: [patientID])
+}
+
+// ============================================================
+// 13. AUDIT LOG — NEW ENTITY
+// ============================================================
+
+model AuditLog {
+  auditLogID    Int      @id @default(autoincrement())
+  adminID       Int
+  action        String   @db.VarChar(30)
+  entityType    String   @db.VarChar(50)
+  entityID      Int
+  changeSummary String   @db.Text
+  changedFields Json?    @db.JsonB
+  createdAt     DateTime @default(now()) @db.Timestamp(6)
+
+  admin Admin @relation("AdminAuditLogs", fields: [adminID], references: [adminID])
+}

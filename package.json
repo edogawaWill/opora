@@ -6,20 +6,35 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "unsplash:curate": "node scripts/curate-unsplash-photos.mjs",
+    "unsplash:commit-selections": "node scripts/commit-unsplash-selections.mjs",
+    "lint": "eslint",
+    "admin:provision": "node scripts/provision-initial-admin.mjs",
+    "symptoms:seed": "node scripts/seed-hpo-symptoms.mjs"
   },
   "dependencies": {
-    "next": "16.4.0",
+    "@better-auth/prisma-adapter": "1.7.10",
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "better-auth": "1.7.11",
+    "dotenv": "^18.0.7",
+    "lucide-react": "^1.68.0",
+    "next": "16.4.3",
+    "pg": "^8.23.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "resend": "6.32.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.3",
+    "prisma": "7.10.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
